@@ -3,6 +3,8 @@
     "*.sqlbook": "sql",
     "*.ndjson": "jsonl",
     "*.dbclient-js": "javascript",
-    "list": "cpp"
+    "list": "cpp",
+    "vector": "cpp",
+    "iostream": "cpp"
   }
 }
