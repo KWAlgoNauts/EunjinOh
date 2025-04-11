@@ -5,7 +5,7 @@
 using namespace std;
 
 
-
+int cnt = 0;
 queue<pair<int, pair<int, int>>> q1;
 queue<pair<int, pair<int, int>>> q2;
 
@@ -34,6 +34,7 @@ int bfs(int h, int n, int m, vector<vector<vector<int>>>& vec, vector<vector<vec
             ripe[nx][ny][nz] = true;
             vec[nx][ny][nz] =  1;
             q1.push({nx, {ny, nz}});
+            cnt++;
           }
         }
       }
@@ -58,6 +59,7 @@ int bfs(int h, int n, int m, vector<vector<vector<int>>>& vec, vector<vector<vec
           ripe[nx][ny][nz] = true;
           vec[nx][ny][nz] = 1;
           q2.push({nx, {ny, nz}});
+          cnt++;
         }
       }
     }
@@ -76,7 +78,7 @@ int main(){
   ios::sync_with_stdio(false);
 
   int n,m,h;
-  int cnt = 0;
+
 
   cin >> n >> m >> h;
 
@@ -106,15 +108,9 @@ int main(){
 
   int day = bfs(h, m, n, vec, ripe);
 
-  for(int i = 0; i < h; i++){
-    for(int j = 0; j < m; j++){
-      for(int k = 0; k < n; k++){
-        if(!ripe[i][j][k]){
-          cout << -1 << "\n";
-          return 0;
-        }
-      }
-    }
+  if(cnt != m*n*h){
+    cout << -1 << "\n";
+    return 0;
   }
 
   cout << day << "\n";
